@@ -20,7 +20,7 @@ defmodule Exsample.Worker do
 
   def handle_info(:discovered_nodes, state) do
     IO.puts "I know these nodes: #{inspect Node.list()}"
-    Process.send_after(self(), :discovered_nodes, 1000)
+    Process.send_after(self(), :discovered_nodes, 30000)
     {:noreply, state}
   end
 end

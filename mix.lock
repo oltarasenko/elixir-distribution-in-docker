@@ -1,0 +1,4 @@
+%{
+  "epmdless": {:git, "https://github.com/oltarasenko/epmdless.git", "72819343d8ca718701dddc8df4ad2b6dd128a984", [tag: "0.1.0"]},
+  "erlang_node_discovery": {:git, "https://github.com/oltarasenko/erlang-node-discovery.git", "2a97fc7fd50c338a7d4fd230293d1b6965a4b0f6", [tag: "0.1.2"]},
+}
