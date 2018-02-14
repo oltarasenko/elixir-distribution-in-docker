@@ -1,18 +1,26 @@
 defmodule Exsample do
-  @moduledoc """
-  Documentation for Exsample.
-  """
+  use Application
 
-  @doc """
-  Hello world.
+  def start(_type, _args) do
+    Supervisor.start_link([{Exsample.Worker, []}], strategy: :one_for_one)
+  end
+end
 
-  ## Examples
+defmodule Exsample.Worker do
+  use GenServer
 
-      iex> Exsample.hello
-      :world
+  def start_link([]) do
+    GenServer.start_link(__MODULE__, [], name: __MODULE__)
+  end
 
-  """
-  def hello do
-    :world
+  def init([]) do
+    Process.send_after(self(), :discovered_nodes, 1000)
+    {:ok, %{}}
+  end
+
+  def handle_info(:discovered_nodes, state) do
+    IO.puts "I know these nodes: #{inspect Node.list()}"
+    Process.send_after(self(), :discovered_nodes, 1000)
+    {:noreply, state}
   end
 end
