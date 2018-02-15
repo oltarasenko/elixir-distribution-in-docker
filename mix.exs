@@ -15,7 +15,7 @@ defmodule Exsample.MixProject do
   def application do
     [
       mod: {Exsample, []},
-      extra_applications: [:logger, :epmdless, :erlang_node_discovery]
+      applications: [:logger, :epmdless, :erlang_node_discovery]
     ]
   end
 

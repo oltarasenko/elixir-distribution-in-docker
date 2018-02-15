@@ -1,0 +1,28 @@
+version: "3"
+services:
+  app1:
+    build: .
+    # command: iex --erl '-noinput'
+    command: make start
+    environment:
+      - EPMDLESS_DIST_PORT=17012
+      - NODE_NAME=app1@host1.local
+    ports:
+      - 17012:17012
+
+  app2:
+    build: .
+    command: make start
+    environment:
+      - EPMDLESS_DIST_PORT=17013
+      - NODE_NAME=app2@host1.local
+    ports:
+      - 17013:17013
+
+  app3:
+    build: .
+    command: make start
+    environment:
+      - RELX_REPLACE_OS_VARS=true
+      - EPMDLESS_DIST_PORT=17014
+      - NODE_NAME=app3@host2.local
