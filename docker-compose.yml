@@ -6,7 +6,7 @@ services:
     command: make start
     environment:
       - EPMDLESS_DIST_PORT=17012
-      - NODE_NAME=app1@host1.local
+      - NODE_NAME=app1@10.154.1.52
     ports:
       - 17012:17012
 
@@ -15,7 +15,7 @@ services:
     command: make start
     environment:
       - EPMDLESS_DIST_PORT=17013
-      - NODE_NAME=app2@host1.local
+      - NODE_NAME=app2@10.154.1.52
     ports:
       - 17013:17013
 
@@ -23,6 +23,5 @@ services:
     build: .
     command: make start
     environment:
-      - RELX_REPLACE_OS_VARS=true
       - EPMDLESS_DIST_PORT=17014
-      - NODE_NAME=app3@host2.local
+      - NODE_NAME=app3@10.154.1.52

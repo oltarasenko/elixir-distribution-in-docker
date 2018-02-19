@@ -9,3 +9,8 @@ RUN apt-get clean && \
 
 COPY . /exsample
 WORKDIR /exsample
+
+RUN mix deps.clean --all
+RUN mix deps.get
+RUN mix local.rebar --force
+RUN mix deps.compile
